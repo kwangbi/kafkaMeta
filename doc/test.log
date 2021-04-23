@@ -1,0 +1,16 @@
+-- 주키퍼 실행
+bin/zkServer.sh start
+-- 카프카 실행
+C:\factory\kafka_2.13-2.8.0\
+bin/windows/kafka-server-start.bat config/server.properties
+
+-- 카프카 테스트
+- 토픽 추가
+bin/windows/kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test20190715
+-- 토픽 조회
+bin/windows/kafka-topics.bat --list --zookeeper localhost:2181 
+-- 카프카 컨슈머 시작
+bin/windows/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test20190715 (변화 없음)
+-- 카프카 프로듀서 시작
+bin/windows/kafka-console-producer.bat --broker-list localhost:9092 --topic test20190715
+
